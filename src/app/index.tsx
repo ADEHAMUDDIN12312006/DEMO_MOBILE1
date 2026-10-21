@@ -1,5 +1,14 @@
+
 import { Ionicons } from "@expo/vector-icons";
-import { Pressable, Text, View } from "react-native";
+import { useEffect, useState } from "react";
+import {
+  Alert,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
+import { useRouter } from "expo-router";
 
 import { styles } from "../constants/styles";
 
@@ -38,7 +47,7 @@ const books: Book[] = [
 ];
 
 // CUSTOM FUNCTION
-function getBookStatus(year: number) {
+function getBookStatus(year: number): string {
   if (year >= 2025) {
     return "Terbaru";
   }
@@ -51,19 +60,27 @@ function BookCard({ book }: { book: Book }) {
   return (
     <View style={styles.bookCard}>
       <View style={styles.iconBox}>
-        <Ionicons name="book-outline" size={32} color="#2563eb" />
+        <Ionicons
+          name="book-outline"
+          size={32}
+          color="#2563eb"
+        />
       </View>
 
       <View style={styles.bookInfo}>
         <Text style={styles.bookTitle}>{book.title}</Text>
 
-        <Text style={styles.author}>Penulis: {book.author}</Text>
+        <Text style={styles.author}>
+          Penulis: {book.author}
+        </Text>
 
         <Text style={styles.category}>
           {book.category} • {book.year}
         </Text>
 
-        <Text style={styles.status}>{getBookStatus(book.year)}</Text>
+        <Text style={styles.status}>
+          {getBookStatus(book.year)}
+        </Text>
       </View>
     </View>
   );
@@ -71,18 +88,35 @@ function BookCard({ book }: { book: Book }) {
 
 // HALAMAN UTAMA
 export default function Index() {
+  const router = useRouter();
+
+  // USESTATE
+  const [selectedCount, setSelectedCount] = useState(0);
+
+  // USEEFFECT
+  useEffect(() => {
+    console.log("Jumlah pilihan berubah:", selectedCount);
+  }, [selectedCount]);
+
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{ paddingBottom: 30 }}
+      showsVerticalScrollIndicator={true}
+    >
       {/* HEADER */}
       <View style={styles.header}>
         <View style={styles.headerTop}>
           <View>
             <Text style={styles.smallText}>BOOKLIST</Text>
-
             <Text style={styles.title}>Daftar Buku</Text>
           </View>
 
-          <Ionicons name="library-outline" size={42} color="#2563eb" />
+          <Ionicons
+            name="library-outline"
+            size={42}
+            color="#2563eb"
+          />
         </View>
 
         <Text style={styles.subtitle}>
@@ -94,20 +128,77 @@ export default function Index() {
       <View style={styles.listContainer}>
         <Text style={styles.sectionTitle}>Koleksi Buku</Text>
 
-        {/* LOOP MENGGUNAKAN MAP */}
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </View>
 
-      {/* BUTTON */}
+      {/* TOMBOL TAMBAH BUKU */}
       <Pressable
         style={styles.button}
-        onPress={() => alert("Fitur tambah buku")}
+        onPress={() =>
+          Alert.alert(
+            "Informasi",
+            "Fitur tambah buku belum tersedia."
+          )
+        }
       >
-        <Ionicons name="add-circle-outline" size={22} color="white" />
-
+        <Ionicons
+          name="add-circle-outline"
+          size={22}
+          color="#ffffff"
+        />
         <Text style={styles.buttonText}>Tambah Buku</Text>
+      </Pressable>
+
+      {/* USESTATE */}
+      <Pressable
+        style={styles.button}
+        onPress={() =>
+          setSelectedCount((previous) => previous + 1)
+        }
+      >
+        <Text style={styles.buttonText}>Pilih Buku (+1)</Text>
+      </Pressable>
+
+      <Text
+        style={{
+          textAlign: "center",
+          marginTop: 10,
+          fontSize: 14,
+          color: "#475569",
+        }}
+      >
+        Jumlah pilihan: {selectedCount}
+      </Text>
+
+      {/* ROUTER.PUSH */}
+      <Pressable
+        style={styles.button}
+        onPress={() => router.push("/detail")}
+      >
+        <Text style={styles.buttonText}>Buka Detail Buku</Text>
+      </Pressable>
+
+      {/* ROUTER.CANGO BACK */}
+      <Pressable
+        style={styles.button}
+        onPress={() => {
+          const canGoBack = router.canGoBack();
+
+          Alert.alert(
+            "Cek Navigasi",
+            canGoBack
+              ? "Halaman sebelumnya tersedia."
+              : "Tidak ada halaman sebelumnya."
+          );
+
+          console.log("router.canGoBack():", canGoBack);
+        }}
+      >
+        <Text style={styles.buttonText}>
+          Cek Navigasi Kembali
+        </Text>
       </Pressable>
 
       {/* INLINE STYLE */}
@@ -115,12 +206,13 @@ export default function Index() {
         style={{
           textAlign: "center",
           marginTop: 15,
+          marginBottom: 10,
           fontSize: 12,
-          color: "#64748b",
+          color: "#475569",
         }}
       >
         Total buku: {books.length}
       </Text>
-    </View>
+    </ScrollView>
   );
 }
