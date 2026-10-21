@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 
-import { styles } from "../constants/styles";
+import { colors, styles } from "../constants/styles";
 
 // TYPE / INTERFACE
 interface Book {
@@ -63,7 +63,7 @@ function BookCard({ book }: { book: Book }) {
         <Ionicons
           name="book-outline"
           size={32}
-          color="#2563eb"
+          color={colors.primary}
         />
       </View>
 
@@ -100,8 +100,8 @@ export default function Index() {
 
   return (
     <ScrollView
-      style={styles.container}
-      contentContainerStyle={{ paddingBottom: 30 }}
+      style={{ flex: 1, backgroundColor: colors.background }}
+      contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={true}
     >
       {/* HEADER */}
@@ -115,7 +115,7 @@ export default function Index() {
           <Ionicons
             name="library-outline"
             size={42}
-            color="#2563eb"
+            color={colors.primary}
           />
         </View>
 
@@ -146,7 +146,7 @@ export default function Index() {
         <Ionicons
           name="add-circle-outline"
           size={22}
-          color="#ffffff"
+          color={colors.white}
         />
         <Text style={styles.buttonText}>Tambah Buku</Text>
       </Pressable>
@@ -161,14 +161,7 @@ export default function Index() {
         <Text style={styles.buttonText}>Pilih Buku (+1)</Text>
       </Pressable>
 
-      <Text
-        style={{
-          textAlign: "center",
-          marginTop: 10,
-          fontSize: 14,
-          color: "#475569",
-        }}
-      >
+      <Text style={styles.totalText}>
         Jumlah pilihan: {selectedCount}
       </Text>
 
@@ -180,7 +173,7 @@ export default function Index() {
         <Text style={styles.buttonText}>Buka Detail Buku</Text>
       </Pressable>
 
-      {/* ROUTER.CANGO BACK */}
+      {/* ROUTER.CAN GO BACK */}
       <Pressable
         style={styles.button}
         onPress={() => {
@@ -201,16 +194,8 @@ export default function Index() {
         </Text>
       </Pressable>
 
-      {/* INLINE STYLE */}
-      <Text
-        style={{
-          textAlign: "center",
-          marginTop: 15,
-          marginBottom: 10,
-          fontSize: 12,
-          color: "#475569",
-        }}
-      >
+      {/* TOTAL BUKU */}
+      <Text style={styles.totalText}>
         Total buku: {books.length}
       </Text>
     </ScrollView>

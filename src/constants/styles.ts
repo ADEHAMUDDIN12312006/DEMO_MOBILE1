@@ -1,114 +1,139 @@
+
 import { StyleSheet } from "react-native";
 
+export const colors = {
+  background: "#EFF6FF",
+  header: "#DBEAFE",
+  card: "#FFFFFF",
+  primary: "#2563EB",
+  primaryDark: "#1D4ED8",
+  title: "#1E3A8A",
+  text: "#475569",
+  border: "#DBEAFE",
+  white: "#FFFFFF",
+  dark: "#0F172A",
+};
+
 export const styles = StyleSheet.create({
-container: {
-  flex: 1,
-  backgroundColor: "#EFF6FF",
-  padding: 16,
-},
+  container: {
+    flexGrow: 1,
+    backgroundColor: colors.background,
+    padding: 16,
+  },
 
-header: {
-  backgroundColor: "#DBEAFE",
-  padding: 20,
-  borderRadius: 16,
-  marginBottom: 20,
-},
+  header: {
+    backgroundColor: colors.header,
+    padding: 16,
+    borderRadius: 16,
+    marginBottom: 24,
+  },
 
-headerTop: {
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-},
+  headerTop: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
 
-smallText: {
-  fontSize: 12,
-  fontWeight: "bold",
-  color: "#2563EB",
-  letterSpacing: 2,
-},
+  smallText: {
+    color: colors.primary,
+    fontSize: 12,
+    fontWeight: "bold",
+    letterSpacing: 2,
+  },
 
-title: {
-  fontSize: 28,
-  fontWeight: "bold",
-  color: "#1E3A8A",
-},
+  title: {
+    color: colors.title,
+    fontSize: 26,
+    fontWeight: "bold",
+  },
 
-subtitle: {
-  color: "#475569",
-  marginTop: 8,
-  fontSize: 14,
-},
+  subtitle: {
+    color: colors.text,
+    marginTop: 8,
+    fontSize: 14,
+  },
 
-listContainer: {
-  marginTop: 8,
-  gap: 12,
-},
+  listContainer: {
+    marginBottom: 20,
+  },
 
-sectionTitle: {
-  fontSize: 20,
-  fontWeight: "bold",
-  color: "#1E293B",
-  marginBottom: 8,
-},
+  sectionTitle: {
+    color: colors.dark,
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
 
-bookCard: {
-  backgroundColor: "#FFFFFF",
-  padding: 16,
-  borderRadius: 16,
-  borderWidth: 1,
-  borderColor: "#DBEAFE",
-  flexDirection: "row",
-  alignItems: "center",
-  marginBottom: 10,
-},
+  bookCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: colors.card,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 16,
+    padding: 16,
+    gap: 14,
+    marginBottom: 16,
+  },
 
-iconBox: {
-  backgroundColor: "#DBEAFE",
-  padding: 12,
-  borderRadius: 14,
-  marginRight: 14,
-},
+  iconBox: {
+    width: 60,
+    height: 60,
+    borderRadius: 14,
+    backgroundColor: colors.header,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-bookInfo: {
-  flex: 1,
-},
+  bookInfo: {
+    flex: 1,
+    gap: 4,
+  },
 
-bookTitle: {
-  fontSize: 16,
-  fontWeight: "bold",
-  color: "#0F172A",
-},
+  bookTitle: {
+    color: colors.dark,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 
-author: {
-  color: "#475569",
-  marginTop: 4,
-},
+  author: {
+    color: colors.text,
+    fontSize: 14,
+  },
 
-category: {
-  color: "#64748B",
-  marginTop: 4,
-},
+  category: {
+    color: colors.text,
+    fontSize: 13,
+  },
 
-status: {
-  color: "#2563EB",
-  fontWeight: "bold",
-  marginTop: 4,
-},
+  status: {
+    color: colors.primary,
+    fontSize: 13,
+    fontWeight: "bold",
+  },
 
-button: {
-  backgroundColor: "#2563EB",
-  padding: 14,
-  borderRadius: 12,
-  alignItems: "center",
-  justifyContent: "center",
-  flexDirection: "row",
-  marginTop: 10,
-},
+  button: {
+    backgroundColor: colors.primary,
+    padding: 14,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    gap: 8,
+    marginBottom: 10,
+  },
 
-buttonText: {
-  color: "#FFFFFF",
-  fontSize: 14,
-  fontWeight: "bold",
-  marginLeft: 8,
-},
+  buttonText: {
+    color: colors.white,
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+
+  totalText: {
+    textAlign: "center",
+    marginTop: 15,
+    marginBottom: 10,
+    fontSize: 12,
+    color: colors.text,
+  },
 });

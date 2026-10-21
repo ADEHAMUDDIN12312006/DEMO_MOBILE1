@@ -3,6 +3,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { Pressable, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 
+import { colors } from "../constants/styles";
+
 export default function Detail() {
   const router = useRouter();
 
@@ -12,13 +14,13 @@ export default function Detail() {
         flex: 1,
         padding: 20,
         justifyContent: "center",
-        backgroundColor: "#eff6ff",
+        backgroundColor: colors.background,
       }}
     >
       <Ionicons
         name="book-outline"
         size={64}
-        color="#2563eb"
+        color={colors.primary}
         style={{
           alignSelf: "center",
           marginBottom: 20,
@@ -29,7 +31,7 @@ export default function Detail() {
         style={{
           fontSize: 26,
           fontWeight: "bold",
-          color: "#1e3a8a",
+          color: colors.title,
           textAlign: "center",
           marginBottom: 12,
         }}
@@ -40,7 +42,7 @@ export default function Detail() {
       <Text
         style={{
           fontSize: 16,
-          color: "#475569",
+          color: colors.text,
           textAlign: "center",
           marginBottom: 24,
         }}
@@ -49,19 +51,19 @@ export default function Detail() {
       </Text>
 
       <Pressable
+        onPress={() => router.back()}
         style={{
-          backgroundColor: "#2563eb",
+          backgroundColor: colors.primary,
           padding: 14,
           borderRadius: 12,
           alignItems: "center",
         }}
-        onPress={() => router.back()}
       >
         <Text
           style={{
-            color: "#ffffff",
-            fontSize: 16,
+            color: colors.white,
             fontWeight: "bold",
+            fontSize: 16,
           }}
         >
           Kembali
